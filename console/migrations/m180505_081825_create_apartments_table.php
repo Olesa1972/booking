@@ -1,0 +1,31 @@
+<?php
+
+use yii\db\Migration;
+
+/**
+ * Handles the creation of table `products`.
+ */
+class m180505_081825_create_apartments_table extends Migration
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function safeUp()
+    {
+        $this->createTable('apartments', [
+            'id' => $this->primaryKey(),
+            'name' => $this->string(),
+            'cover' => $this->string(),
+            'type_id' => $this->integer(),
+            'amount' => $this->integer(),
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function safeDown()
+    {
+        $this->dropTable('apartments');
+    }
+}

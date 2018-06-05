@@ -1,0 +1,55 @@
+version: "3"
+services:
+
+    mysql:
+      restart: always
+      image: mysql:5.6
+      volumes:
+        - mysqldatabooking:/var/lib/mysql
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        MYSQL_DATABASE: booking
+        MYSQL_USER: booking
+        MYSQL_PASSWORD: booking
+        MYSQL_ROOT_PASSWORD: booking
+      entrypoint: ['/entrypoint.sh', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
+
+    webserver:
+      restart: always
+      image: nginx:alpine
+      working_dir: /application
+      ports:
+        - "1230:80"
+        - "1231:82"
+      volumes:
+        - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        - .:/application
+      depends_on:
+        - backend
+      links:
+        - backend
+
+    backend:
+      user: 1000:1000
+      build: .
+      restart: always
+      working_dir: /application
+      volumes:
+        - .:/application
+      depends_on:
+        - mysql
+        - redis
+      links:
+        - mysql
+        - redis
+
+    redis:
+      image: redis:latest
+      restart: always
+
+
+volumes:
+  mysqldatabooking:
+    driver: local
