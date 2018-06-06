@@ -58,7 +58,7 @@ class Applications extends \yii\db\ActiveRecord
             'apartment' => Yii::t('app', 'Номер'),
             'quantity' => Yii::t('app', 'Кол-во дней'),
             'phone' => Yii::t('app', 'Телефон'),
-            'cost' => Yii::t('app', 'Стоимость'),
+            'cost' => Yii::t('app', 'Стоимость (руб.)'),
             'created_at' => Yii::t('app', 'Дата создания'),
         ];
     }
@@ -80,7 +80,7 @@ class Applications extends \yii\db\ActiveRecord
     // Метод получения суммы номера
     public function getCost()
     {
-        return $this->quantity * $this->getApartment()->one()->amount . ' руб.';
+        return $this->quantity * $this->getApartment()->one()->amount;
     }
     
 }

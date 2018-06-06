@@ -99,7 +99,7 @@ $("#success").on("click", function() {
                     },
             ],
             'created_at',
-            'cost',
+            'cost:decimal',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {delete}'],
         ],

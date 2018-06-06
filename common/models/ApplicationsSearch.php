@@ -47,7 +47,7 @@ class ApplicationsSearch extends Applications
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> ['defaultOrder' => ['created_at'=>SORT_ASC]]
+            'sort'=> ['defaultOrder' => ['status'=>SORT_ASC]]
         ]);
 
         $this->load($params);
