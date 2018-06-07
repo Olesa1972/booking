@@ -8,6 +8,8 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Создать заказ');
 $this->params['breadcrumbs'][] = $this->title;
+$foramtter = new \yii\i18n\Formatter();
+
 ?>
 <div class="applications-create">
 
@@ -18,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= $apartment->name ?></h2>
 
             <p><img width="100px" src="<?= $apartment->getCover() ?>" alt=""></p>
-            <p><?= $apartment->amount ?> руб. за сутки</p>
+            <p><?= $foramtter->asDecimal($apartment->amount) ?> руб. за сутки</p>
         </div>
     </div>
 

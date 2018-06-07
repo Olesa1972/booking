@@ -5,6 +5,7 @@
 $this->title = 'Бронирование номеров';
 $i = 0;
 $div = false;
+$foramtter = new \yii\i18n\Formatter();
 ?>
 <div class="site-index">
 
@@ -29,7 +30,7 @@ $div = false;
 
                 <p><img width="200px" src="<?= $apartment->getCover() ?>" alt=""></p>
                 <p>Тип <?= $apartment->getType() ?></p>
-                <p><?= $apartment->amount ?> руб. за сутки</p>
+                <p><?= $foramtter->asDecimal($apartment->amount)  ?> руб. за сутки</p>
 
                 <p><a class="btn btn-default" href="/applications/create?id=<?= $apartment->id ?>">
                         Забронировать
