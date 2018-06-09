@@ -18,7 +18,7 @@ function XFormatPrice(_number)
 {
     var decimal=0;
     var separator=\' \';
-    var decpoint = \'.\';
+    var decpoint = \',\';
     var format_string = \'# руб.\';
  
     var r=parseFloat(_number)
